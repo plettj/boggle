@@ -1,13 +1,11 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import Container from "@/components/Container";
 
 export default async function Home() {
   return (
-    <div className="flex flex-col gap-4 my-auto justify items-center justify-center text-center">
-      <p className="text-balance">Big Boggle</p>
-      <Button variant="outline" asChild>
-        <Link href="https://github.com/plettj/boggle">Source Code</Link>
-      </Button>
-    </div>
+    <Container>
+      <h1 className="mt-8 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+        Big Boggle
+      </h1>
+    </Container>
   );
 }
