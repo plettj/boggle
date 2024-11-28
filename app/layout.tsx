@@ -19,7 +19,10 @@ const fontSans = JetBrains_Mono({
 
 // OPG compliant metadata (https://ogp.me/)
 export const metadata: Metadata = {
-  title: OG_NAME_FULL,
+  title: {
+    default: OG_NAME_FULL,
+    template: `%s | ${OG_NAME}`,
+  },
   description: OG_DESCRIPTION,
   generator: "Next.js",
   keywords: OG_KEYWORDS,

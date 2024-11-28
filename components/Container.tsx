@@ -15,7 +15,13 @@ export default function Container({
         fullWidth ? "w-screen sm:px-16" : "w-full max-w-[80ch] sm:px-8"
       )}
     >
-      {children}
+      <h1 className="mt-12 mb-6 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+        Big Boggle
+      </h1>
+
+      <hr />
+
+      <div className="mt-12">{children}</div>
 
       <div className="max-w-[72ch] w-full mx-auto">
         <Footer />
