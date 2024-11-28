@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "packageManager": "pnpm@9.12.0",
+  "type": "module",
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

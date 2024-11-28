@@ -8,6 +8,7 @@ Big Boggle is like [Boggle](https://en.wikipedia.org/wiki/Boggle), but bigger. I
 
 <details>
 <summary>5x5 Dice Letter Distribution</summary>
+<br>
 
 AAAFRS AAEEEE AAFIRS ADENNN AEEEEM AEEGMU AEGMNN AFIRSY BJKQXZ CCNSTW CEIILT CEILPT CEIPST DHHNOT DHHLOR DHLNOR DDLNOR EIIITT EMOTTT ENSSSU FIPRSY GORRVW HIPRRY NOOTUW OOOTTU
 
