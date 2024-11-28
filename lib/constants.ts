@@ -9,7 +9,7 @@ export const PATH_HOME = "/";
 
 export const OG_SITE_NAME = "boggle5.com";
 export const OG_NAME = "Big Boggle";
-export const OG_NAME_FULL = "Big Boggle | 5x5 Online";
+export const OG_NAME_FULL = "5x5 Online | Big Boggle";
 export const OG_DESCRIPTION =
   "A 5x5 version of the classic word game Boggle, built by Josiah Plett.";
 export const OG_KEYWORDS = [

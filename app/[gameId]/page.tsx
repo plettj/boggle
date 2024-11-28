@@ -7,12 +7,12 @@ import Board from "@/components/game/Board";
 
 type Params = {
   params: {
-    gameId: string[];
+    gameId: string;
   };
 };
 
 export default async function Game({ params }: Params) {
-  const id = params.gameId[0];
+  const id = params.gameId;
 
   console.log("Game ID:", id);
 
@@ -34,7 +34,7 @@ export default async function Game({ params }: Params) {
 }
 
 export function generateMetadata({ params }: Params): Metadata {
-  const id = params.gameId[0];
+  const id = params.gameId;
 
   console.log("Game ID:", id);
 
