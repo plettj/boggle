@@ -63,12 +63,6 @@ export function generateMetadata({ params }: Params): Metadata {
       title: "Custom Game",
       description: "A custom game of 5x5 Boggle.",
       url: `${BASE_URL}/${id}`,
-      // ...(post.ogImage && {
-      //   previewImage: {
-      //     url: post.ogImage,
-      //     alt: post.subtitle ?? "Post display image",
-      //   },
-      // }),
     }),
   };
 }

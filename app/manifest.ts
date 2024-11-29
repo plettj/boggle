@@ -3,6 +3,7 @@ import {
   OG_KEYWORDS,
   OG_NAME,
   OG_NAME_FULL,
+  PATH_FAVICON,
 } from "@/lib/constants";
 import { MetadataRoute } from "next";
 
@@ -18,12 +19,12 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#FFFFFF",
     theme_color: "#1C1917",
     lang: "en",
-    // icons: [
-    //   {
-    //     src: "/icons/favicon48x48.png",
-    //     sizes: "48x48",
-    //     type: "image/png",
-    //   },
-    // ],
+    icons: [
+      {
+        src: PATH_FAVICON,
+        sizes: "64x64",
+        type: "image/png",
+      },
+    ],
   };
 }

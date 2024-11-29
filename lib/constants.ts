@@ -23,6 +23,17 @@ export const OG_KEYWORDS = [
   "social",
 ];
 
+export const PATH_FAVICON = "/icons/favicon.png";
+export const OG_IMAGES = [
+  {
+    url: PATH_FAVICON,
+    alt: "Big Boggle Logo",
+    width: 64,
+    height: 64,
+    type: "image/png",
+  },
+];
+
 export const AUTHOR: Author = {
   name: "Josiah Plett",
   url: "https://plett.dev",

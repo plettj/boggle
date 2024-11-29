@@ -1,9 +1,11 @@
 import {
   BASE_URL,
   OG_DESCRIPTION,
+  OG_IMAGES,
   OG_KEYWORDS,
   OG_NAME,
   OG_NAME_FULL,
+  PATH_FAVICON,
 } from "@/lib/constants";
 import { type Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
@@ -29,7 +31,13 @@ export const metadata: Metadata = {
   authors: AUTHOR,
   creator: AUTHOR.name,
   referrer: "strict-origin-when-cross-origin", // Default
-  // icons: [{ url: `${BASE_URL}/icons/favicon48x48.png`, sizes: "48x48" }],
+  icons: [
+    {
+      url: PATH_FAVICON,
+      sizes: "64x64",
+      type: "image/png",
+    },
+  ],
   metadataBase: new URL(BASE_URL),
   formatDetection: {
     telephone: false,
@@ -45,12 +53,7 @@ export const metadata: Metadata = {
     siteName: OG_NAME,
     title: OG_NAME_FULL,
     description: OG_DESCRIPTION,
-    // images: [
-    //   {
-    //     url: `${BASE_URL}/icons/favicon48x48.png`,
-    //     alt: "OG Logo",
-    //   },
-    // ],
+    images: OG_IMAGES,
   },
 };
 

@@ -8,10 +8,4 @@ export type OGData = {
   description: string;
   url: string;
   type?: string;
-  previewImage?: {
-    url: string;
-    width?: number;
-    height?: number;
-    alt?: string;
-  };
 };
