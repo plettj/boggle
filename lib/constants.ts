@@ -2,12 +2,12 @@ import { Author } from "./types";
 import { isProd } from "./utils";
 
 export const BASE_URL = isProd()
-  ? "https://boggle5.com"
+  ? "https://plett.fun/boggle"
   : "http://localhost:3000";
 
 export const PATH_HOME = "/";
 
-export const OG_SITE_NAME = "boggle5.com";
+export const OG_SITE_NAME = "plett.fun/boggle";
 export const OG_NAME = "Big Boggle";
 export const OG_NAME_FULL = "5x5 Online | Big Boggle";
 export const OG_DESCRIPTION =
