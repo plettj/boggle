@@ -1,5 +1,5 @@
 /**
- * Generates a URL-safe encoded 5x5 Boggle game.
+ * Generates a URL-safe encoded 5x5 Boggle game, prefixed with "-" to indicate it is a hash.
  * @returns {string} Encoded Boggle game string.
  */
 export function generateBoggleGame() {
@@ -19,21 +19,41 @@ export function generateBoggleGame() {
   totalBytes.set(dieRollsBytes, 0);
   totalBytes.set(permutationBytes, dieRollsBytes.length);
 
-  return base64Encode(totalBytes);
+  return "-" + base64Encode(totalBytes);
 }
 
 /**
- * Decodes a URL-safe encoded 5x5 Boggle game.
+ * Decodes a URL-safe encoded 5x5 Boggle game, expecting a hashed string prefixed with "-".
  * @param {string} encodedStr - Encoded Boggle game string.
  * @returns {object} An object containing the die rolls and permutation.
  */
 export function decodeBoggleGame(encodedStr: string) {
+  if (!encodedStr.startsWith("-")) {
+    throw new Error('Hashed Big Boggle game must start with a "-" prefix.');
+  }
+
+  encodedStr = encodedStr.substring(1);
+
+  const expectedLength = 35; // 35 base64 characters to encode 26 bytes without padding.
+
+  if (encodedStr.length !== expectedLength) {
+    throw new Error(
+      `Hashed Big Boggle game must contain ${expectedLength} characters; found ${encodedStr.length}.`
+    );
+  }
+
   const totalBytes = base64Decode(encodedStr);
 
-  // Expect the die rolls to take up 10 bytes.
-  const dieRollByteNum = 10;
-  const dieRollsBytes = totalBytes.slice(0, dieRollByteNum);
-  const permutationBytes = totalBytes.slice(dieRollByteNum);
+  // Expect the total bytes to be 26 (10 bytes for die rolls and 16 bytes for permutation)
+  if (totalBytes.length !== 26) {
+    throw new Error(
+      `Hashed Big Boggle game must represent 26 bytes; found ${totalBytes.length}.`
+    );
+  }
+
+  const dieByteNum = 10;
+  const dieRollsBytes = totalBytes.slice(0, dieByteNum);
+  const permutationBytes = totalBytes.slice(dieByteNum);
 
   const dieRolls = unpackDieRolls(dieRollsBytes);
 
@@ -94,8 +114,8 @@ function unpackDieRolls(buffer: Uint8Array) {
  * @returns {Uint8Array} Packed permutation.
  */
 function packPermutation(permutation: number[]) {
-  const bitsNeeded = 25 * 5;
-  const bytesNeeded = Math.ceil(bitsNeeded / 8);
+  const bitsNeeded = 25 * 5; // 125 bits
+  const bytesNeeded = Math.ceil(bitsNeeded / 8); // 16 bytes
   const buffer = new Uint8Array(bytesNeeded);
   let bitIndex = 0;
 
@@ -170,7 +190,7 @@ function base64Decode(base64: string) {
 }
 
 /**
- * Shuffles an array using Fisher-Yates algorithm.
+ * Shuffles an array using the Fisher-Yates algorithm.
  * @param {number[]} array - The array to shuffle.
  * @returns {number[]} The shuffled array.
  */
