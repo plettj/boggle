@@ -4,23 +4,33 @@ import { AUTHOR, BASE_URL, OG_KEYWORDS } from "@/lib/constants";
 import { getOGData } from "@/lib/utils";
 import Container from "@/components/Container";
 import Board from "@/components/game/Board";
+import { decodeBoggleGame } from "@/lib/game/gameHash";
 
-type Params = {
-  params: {
-    gameId: string;
-  };
+type GameProps = {
+  params: Promise<{ gameId: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export default async function Game({ params }: Params) {
-  const id = params.gameId;
+export default async function Game({ params }: GameProps) {
+  const id = (await params).gameId;
 
-  console.log("Game ID:", id);
+  let dieRolls,
+    permutation: number[] = [];
 
-  if (!id) {
+  try {
+    const gameData = decodeBoggleGame(id);
+    dieRolls = gameData.dieRolls;
+    permutation = gameData.permutation;
+  } catch (e: unknown) {
+    console.error(e);
     return (
       <Container>
         <p>
-          Game <Code>{id}</Code> is not a valid 5x5 boggle game.
+          {(e as { message: string })?.message || (
+            <>
+              Game <Code>{id}</Code> is not a valid 5x5 boggle game.
+            </>
+          )}
         </p>
       </Container>
     );
@@ -28,15 +38,19 @@ export default async function Game({ params }: Params) {
 
   return (
     <Container>
-      <Board id={id} />
+      <Board dieRolls={dieRolls} permutation={permutation} />
     </Container>
   );
 }
 
-export function generateMetadata({ params }: Params): Metadata {
-  const id = params.gameId;
+export async function generateMetadata({
+  params,
+}: GameProps): // parent: ResolvingMetadata
+Promise<Metadata> {
+  const id = (await params).gameId;
 
-  console.log("Game ID:", id);
+  // Optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
 
   if (!id) {
     return {
