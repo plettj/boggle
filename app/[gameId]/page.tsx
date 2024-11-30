@@ -5,6 +5,8 @@ import { getOGData } from "@/lib/utils";
 import Container from "@/components/Container";
 import Board from "@/components/game/Board";
 import { decodeBoggleGame } from "@/lib/game/gameHash";
+import GenerateButton from "@/components/GenerateButton";
+import ShareButton from "@/components/ShareButton";
 
 type GameProps = {
   params: Promise<{ gameId: string }>;
@@ -39,6 +41,10 @@ export default async function Game({ params }: GameProps) {
   return (
     <Container>
       <Board dieRolls={dieRolls} permutation={permutation} />
+      <div className="grid grid-cols-2 w-full gap-4">
+        <GenerateButton />
+        <ShareButton id={id} />
+      </div>
     </Container>
   );
 }
