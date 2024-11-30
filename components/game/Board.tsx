@@ -1,11 +1,13 @@
+import { dice } from "@/lib/game/constants";
+
 export default function Board({
   dieRolls,
   permutation,
-  default: isDefault = false,
+  isDefault = false,
 }: {
   dieRolls: number[];
   permutation: number[];
-  default?: boolean;
+  isDefault?: boolean;
 }) {
   let gridLetters: string[] = [];
 
@@ -16,19 +18,21 @@ export default function Board({
       gridLetters[10 + i] = plettLetters[i];
     }
   } else {
-    const grid = [];
-    for (let i = 0; i < 25; i++) {
-      grid[permutation[i]] = dieRolls[i];
-    }
+    gridLetters = Array(25);
 
-    // Map die rolls to letters (assuming dieRolls are numbers 0-5)
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    gridLetters = grid.map((value) => letters[value % 26]);
+    for (let i = 0; i < 25; i++) {
+      const dieIndex = i;
+      const die = dice[dieIndex];
+      const sideIndex = dieRolls[i];
+      const letter = die[sideIndex];
+      const position = permutation[i];
+      gridLetters[position] = letter;
+    }
   }
 
   return (
     <div className="flex flex-col items-center justify-center w-full">
-      <section className="grid grid-cols-5 gap-2 w-full text-xl max-w-[30ch]">
+      <section className="grid grid-cols-5 gap-2 w-full text-xl max-w-[25ch]">
         {gridLetters.map((letter, index) => (
           <Die key={index} letter={letter} />
         ))}
@@ -38,9 +42,10 @@ export default function Board({
 }
 
 function Die({ letter }: { letter: string }) {
+  const displayLetter = letter === "Q" ? "Qu" : letter;
   return (
     <div className="border aspect-square rounded-md font-semibold flex items-center justify-center">
-      {letter}
+      {displayLetter}
     </div>
   );
 }
