@@ -3,7 +3,7 @@ import { isProd } from "./utils";
 
 export const BASE_URL = isProd()
   ? "https://plett.fun/boggle"
-  : "http://localhost:3000";
+  : "http://localhost:3000/boggle";
 
 export const PATH_HOME = "/";
 
