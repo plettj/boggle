@@ -7,7 +7,7 @@ This project is an attempt to create [Big Boggle](https://boardgamegeek.com/boar
 Big Boggle is like [Boggle](https://en.wikipedia.org/wiki/Boggle), but bigger. It's a 5x5 board instead of a 4x4 board.
 
 <details>
-<summary>5x5 Dice Letter Distribution</summary>
+<summary>5x5 Boggle Dice Letter Distribution</summary>
 <br>
 
 AAAFRS AAEEEE AAFIRS ADENNN AEEEEM AEEGMU AEGMNN AFIRSY BJKQXZ CCNSTW CEIILT CEILPT CEIPST DHHNOT DHHLOR DHLNOR DDLNOR EIIITT EMOTTT ENSSSU FIPRSY GORRVW HIPRRY NOOTUW OOOTTU
