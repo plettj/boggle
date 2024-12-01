@@ -18,7 +18,7 @@ export default function GenerateButton({
     console.log(url);
 
     // TODO: Use actual clipboard API hook
-    navigator.clipboard.writeText(getShareString(url));
+    navigator.clipboard.writeText(getShareString(gameId));
 
     // TODO: Use shadcn toasts
     alert(`Game URL copied to clipboard: ${url}`);

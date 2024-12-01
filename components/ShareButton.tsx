@@ -11,7 +11,7 @@ export default function ShareButton({ id }: { id: string }) {
     console.log(url);
 
     // TODO: Use actual clipboard API hook
-    navigator.clipboard.writeText(getShareString(url));
+    navigator.clipboard.writeText(getShareString(id));
 
     // TODO: Use shadcn toasts
     alert(`Game URL copied to clipboard: ${url}`);
